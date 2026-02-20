@@ -1,73 +1,60 @@
-# React + TypeScript + Vite
+# Suguru Puzzle Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Веб-приложение для генерации и решения головоломок Сугуру (Suguru), также известных как Tectonics.
 
-Currently, two official plugins are available:
+## Описание
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Сугуру — это логическая головоломка. Цель состоит в том, чтобы заполнить сетку цифрами так, чтобы каждый регион (обведенный жирными линиями) содержал цифры от 1 до N, где N — количество клеток в регионе. Одинаковые цифры не могут касаться друг друга, даже по диагонали.
 
-## React Compiler
+Это приложение позволяет генерировать бесконечное количество уникальных головоломок различной сложности.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Основные возможности
 
-## Expanding the ESLint configuration
+*   **Генерация головоломок**: Умный алгоритм создает гарантированно решаемые поля.
+*   **Настройки сложности**:
+    *   Размер поля (количество строк и столбцов).
+    *   Максимальная цифра в регионе (от 3 до 7).
+    *   Количество изначально открытых цифр.
+*   **Случайный режим**: Возможность задать случайные значения для максимальной цифры и количества открытых клеток.
+*   **Интерактивный интерфейс**:
+    *   Подсветка регионов при наведении и выборе клетки.
+    *   Удобный ввод цифр (с клавиатуры или экранных кнопок).
+    *   Проверка корректности ходов в реальном времени.
+*   **Сохранение прогресса**: Настройки игры сохраняются между сессиями.
+*   **Индикатор загрузки**: Визуальное отображение процесса генерации сложных полей.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Технологический стек
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+*   **Frontend**: React 19, TypeScript
+*   **Сборка**: Vite 7
+*   **Стилизация**: Tailwind CSS
+*   **UI Компоненты**: shadcn/ui (Radix UI)
+*   **Иконки**: Lucide React
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Установка и запуск
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1.  Клонируйте репозиторий:
+    ```bash
+    git clone <repository-url>
+    cd Suguru
+    ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2.  Установите зависимости:
+    ```bash
+    npm install
+    ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+3.  Запустите сервер разработки:
+    ```bash
+    npm run dev
+    ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+4.  Откройте приложение в браузере по адресу `http://localhost:5173`.
+
+## Правила игры
+
+1.  Сетка разделена на регионы (группы клеток, обведенные жирными линиями).
+2.  Каждый регион должен содержать набор цифр от 1 до количества клеток в этом регионе.
+3.  Одинаковые цифры не могут находиться в соседних клетках (ни по горизонтали, ни по вертикали, ни по диагонали).
+
+Приятной игры!
