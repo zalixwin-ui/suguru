@@ -66,7 +66,7 @@ export function Board({ board, onBoardChange, onWin }: BoardProps) {
     return board.regions[regionId]?.color || 'bg-gray-100 border-gray-300';
   };
 
-  const isRegionHighlighted = (regionId: number, rowIndex: number, colIndex: number) => {
+  const isRegionHighlighted = (regionId: number) => {
     // Highlight if hovered
     if (hoveredRegionId === regionId) return true;
     
@@ -96,7 +96,7 @@ export function Board({ board, onBoardChange, onWin }: BoardProps) {
               isSelected={
                 selectedCell?.row === rowIndex && selectedCell?.col === colIndex
               }
-              isRegionHovered={isRegionHighlighted(cell.regionId, rowIndex, colIndex)}
+              isRegionHovered={isRegionHighlighted(cell.regionId)}
               onClick={() => handleCellClick(rowIndex, colIndex)}
               onMouseEnter={() => handleMouseEnter(cell.regionId)}
               onMouseLeave={handleMouseLeave}
