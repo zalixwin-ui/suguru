@@ -6,7 +6,7 @@ import { Board } from '@/components/suguru/Board';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
-import { Trophy, RotateCcw, Settings2, Sparkles, Loader2 } from 'lucide-react';
+import { Trophy, RotateCcw, RefreshCw, Settings2, Sparkles, Loader2 } from 'lucide-react';
 import { Toaster, toast } from 'sonner';
 
 function App() {
@@ -127,6 +127,15 @@ function App() {
               >
                 <RotateCcw className="w-4 h-4" />
                 Заново
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handlePlayAgain}
+                className="flex items-center gap-2"
+              >
+                <RefreshCw className="w-4 h-4" />
+                Новое поле
               </Button>
               <Button
                 variant="outline"
