@@ -106,7 +106,7 @@ function App() {
       
       {/* Header */}
       <header className="bg-white border-b shadow-sm">
-        <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+        <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between gap-2">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
               <Sparkles className="w-6 h-6 text-primary-foreground" />
@@ -118,33 +118,33 @@ function App() {
           </div>
           
           {gameState === 'playing' && board && (
-            <div className="flex gap-2">
+            <div className="flex gap-1 sm:gap-2 shrink-0">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={handleRestart}
-                className="flex items-center gap-2"
+                className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3"
               >
                 <RotateCcw className="w-4 h-4" />
-                Заново
+                <span className="hidden sm:inline">Заново</span>
               </Button>
               <Button
                 variant="outline"
                 size="sm"
                 onClick={handlePlayAgain}
-                className="flex items-center gap-2"
+                className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3"
               >
                 <RefreshCw className="w-4 h-4" />
-                Новое поле
+                <span className="hidden sm:inline">Новое поле</span>
               </Button>
               <Button
                 variant="outline"
                 size="sm"
                 onClick={handleGoToSettings}
-                className="flex items-center gap-2"
+                className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3"
               >
                 <Settings2 className="w-4 h-4" />
-                Настройки
+                <span className="hidden sm:inline">Настройки</span>
               </Button>
             </div>
           )}

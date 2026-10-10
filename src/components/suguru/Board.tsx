@@ -82,9 +82,11 @@ export function Board({ board, onBoardChange, onWin }: BoardProps) {
   return (
     <div className="flex flex-col items-center gap-4">
       <div 
-        className="inline-grid gap-0 border-2 border-slate-400 p-1 bg-slate-200 rounded-lg"
+        className="inline-grid gap-0 border-2 border-slate-400 p-1 bg-slate-200 rounded-lg max-w-full"
         style={{
           gridTemplateColumns: `repeat(${board.cols}, minmax(0, 1fr))`,
+          // Ячейка 48px на десктопе, но не шире доступной ширины экрана (с учётом рамки и отступов)
+          ['--cell-size' as string]: `min(3rem, calc((100vw - 4rem) / ${board.cols}))`,
         }}
       >
         {board.cells.map((row, rowIndex) =>
@@ -114,7 +116,7 @@ export function Board({ board, onBoardChange, onWin }: BoardProps) {
             onClick={() => handleNumberInput(num)}
             disabled={!selectedCell || board.cells[selectedCell.row][selectedCell.col].isFixed}
             className={cn(
-              'w-10 h-10 rounded-lg font-semibold text-lg transition-all',
+              'w-11 h-11 rounded-lg font-semibold text-lg transition-all touch-manipulation',
               'bg-primary text-primary-foreground hover:bg-primary/90',
               'disabled:opacity-50 disabled:cursor-not-allowed',
               'active:scale-95'
@@ -127,7 +129,7 @@ export function Board({ board, onBoardChange, onWin }: BoardProps) {
           onClick={() => handleNumberInput(null)}
           disabled={!selectedCell || board.cells[selectedCell.row][selectedCell.col].isFixed}
           className={cn(
-            'w-10 h-10 rounded-lg font-semibold text-lg transition-all',
+            'w-11 h-11 rounded-lg font-semibold text-lg transition-all touch-manipulation',
             'bg-destructive text-destructive-foreground hover:bg-destructive/90',
             'disabled:opacity-50 disabled:cursor-not-allowed',
             'active:scale-95'

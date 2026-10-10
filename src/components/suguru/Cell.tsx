@@ -41,7 +41,8 @@ export function CellComponent({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       className={cn(
-        'w-12 h-12 flex items-center justify-center text-xl font-semibold cursor-pointer',
+        'w-[var(--cell-size)] h-[var(--cell-size)] flex items-center justify-center font-semibold cursor-pointer',
+        'text-[length:calc(var(--cell-size)*0.42)] leading-none touch-manipulation',
         'border-2 transition-all duration-150 select-none outline-none',
         'focus:ring-2 focus:ring-primary focus:ring-offset-1',
         regionColor,
